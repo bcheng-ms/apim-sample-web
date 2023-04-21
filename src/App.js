@@ -5,8 +5,8 @@ import { useState } from 'react';
 
 function App() {
   const [message, setMessage] = useState('Not Logged in');
-  const [loggedIn, setLoggedIn] = useState(true);
-  const [jwt, setJwt] = useState('test');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [jwt, setJwt] = useState();
   const [apiResponse, setApiResponse] = useState('')
   const responseMessage = (response) => {
     console.log(response);
