@@ -10,7 +10,7 @@ function App() {
   const [apiResponse, setApiResponse] = useState('')
   const responseMessage = (response) => {
     console.log(response);
-    setMessage(`Logged In: ${response}`);
+    setMessage(`Logged In`);
     setJwt(response.credential);
     setLoggedIn(true);
 };
