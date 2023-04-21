@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { GoogleLogin } from '@react-oauth/google';
 import { useState } from 'react';
-import SecuredFragment from './SecuredFragment';
+
 function App() {
   const [message, setMessage] = useState('Not Logged in');
   const [loggedIn, setLoggedIn] = useState(false);
@@ -18,6 +18,15 @@ const errorMessage = (error) => {
     setMessage(error);
 };
 
+const renderSecured = () => {
+  return (
+    <div >
+      <span >You are secured: </span>
+      <span>{key}</span>
+    </div>
+  );
+};
+
   return (
     <div className="App">
       <header className="App-header">
@@ -29,7 +38,7 @@ const errorMessage = (error) => {
         <p>
         {message}
         </p>
-        {loggedIn ? <SecuredFragment jwt={jwt}/> : <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />}
+        {loggedIn ? renderSecured() : <GoogleLogin onSuccess={responseMessage} onError={errorMessage} />}
       </header>
     </div>
   );
