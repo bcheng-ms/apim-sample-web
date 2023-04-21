@@ -20,7 +20,7 @@ const errorMessage = (error) => {
 };
 
 const renderSecured = () => {
-  fetch('https://ms-apimsample-api.azurewebsites.net/api/accounts/test', {
+  fetch('https://ms-apimsample.azure-api.net/api/accounts/test', {
   headers: {Authorization: `Bearer ${jwt}`}
 })
    .then(resp => resp.json())
