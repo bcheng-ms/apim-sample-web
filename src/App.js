@@ -6,7 +6,8 @@ import { useState } from 'react';
 function App() {
   const [message, setMessage] = useState('Not Logged in');
   const [loggedIn, setLoggedIn] = useState(false);
-  const [jwt, setJwt] = useState();
+  const [jwt, setJwt] = useState('');
+  const [apiResponse, setApiResponse] = useState('')
   const responseMessage = (response) => {
     console.log(response);
     setMessage(`Logged In: ${response}`);
@@ -19,10 +20,16 @@ const errorMessage = (error) => {
 };
 
 const renderSecured = () => {
+  fetch('https://ms-apimsample-api.azurewebsites.net/api/accounts/test', {
+  headers: {Authorization: `Bearer ${jwt}`}
+})
+   .then(resp => resp.json())
+   .then(json => {setApiResponse(JSON.stringify(json)); console.log(JSON.stringify(json))})
   return (
     <div >
       <span >You are secured: </span>
       <span>{jwt}</span>
+      <span>{apiResponse}</span>
     </div>
   );
 };
