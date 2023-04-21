@@ -22,7 +22,7 @@ const renderSecured = () => {
   return (
     <div >
       <span >You are secured: </span>
-      <span>{key}</span>
+      <span>{jwt}</span>
     </div>
   );
 };
