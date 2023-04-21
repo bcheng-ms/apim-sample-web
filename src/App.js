@@ -33,7 +33,7 @@ const showInfo = ()=>{
   return(
     <>
     <div>{apiResponse.token.name}</div>
-    <div>`${apiResponse.account.user}: ${apiResponse.account.currency} ${apiResponse.account.balance}`</div>
+    <div>`${apiResponse.user}: ${apiResponse.currency} ${apiResponse.balance}`</div>
     </>
   )
 }
