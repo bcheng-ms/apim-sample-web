@@ -9,11 +9,12 @@ on:
       - main
 env:
   AZURE_WEBAPP_NAME: ms-apimsample   # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: './b2c'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '16.x'
 jobs:
   build:
     runs-on: ubuntu-latest
+    working-directory: b2c
     steps:
     - uses: actions/checkout@v3
     - name: build it
