@@ -19,7 +19,7 @@ const AccountDisplay = (props) => {
     useEffect(() => {
         if (!jwt) {
             const accessTokenRequest = {
-                scopes: [],
+                scopes: ['openid', 'profile'],
                 account: accounts[0],
             };
             instance
@@ -28,6 +28,7 @@ const AccountDisplay = (props) => {
                     // Acquire token silent success
                     let accessToken = accessTokenResponse.accessToken;
                     // Call your API with token 
+                    console.log(accessTokenResponse)
                     console.log('Got Token', accessToken)
                     setJwt(accessToken);
                 })
