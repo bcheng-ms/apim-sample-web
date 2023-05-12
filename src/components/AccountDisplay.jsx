@@ -26,7 +26,7 @@ const AccountDisplay = (props) => {
                 .acquireTokenSilent(accessTokenRequest)
                 .then((accessTokenResponse) => {
                     // Acquire token silent success
-                    let accessToken = accessTokenResponse.accessToken;
+                    let accessToken = accessTokenResponse.idToken;
                     // Call your API with token 
                     console.log(accessTokenResponse)
                     console.log('Got Token', accessToken)
