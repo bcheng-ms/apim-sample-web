@@ -12,6 +12,7 @@ import AccountDisplay from '../components/AccountDisplay';
 export const Home = () => {
     const { instance } = useMsal();
     const activeAccount = instance.getActiveAccount();
+    console.log(activeAccount);
     return (
         <>
             <AuthenticatedTemplate>

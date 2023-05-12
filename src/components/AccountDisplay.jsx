@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useMsal } from '@azure/msal-react';
 
 const AccountDisplay = (props) => {
+    const { instance } = useMsal();
+    const activeAccount = instance.getActiveAccount();
+    console.log('AccountDisplay:', activeAccount);
     const [jwt] = useState(props.idToken);
     const [loading, setLoading] = useState(false);
     const [apiResponse, setApiResponse] = useState('')
