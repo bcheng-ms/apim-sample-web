@@ -19,7 +19,7 @@ const AccountDisplay = (props) => {
     useEffect(() => {
         if (!jwt) {
             const accessTokenRequest = {
-                scopes: ["user.read"],
+                scopes: [],
                 account: accounts[0],
             };
             instance
