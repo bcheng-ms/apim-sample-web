@@ -10,8 +10,9 @@ import { IdTokenData } from '../components/DataDisplay';
  */
 export const Home = () => {
     const { instance } = useMsal();
+    console.log(instance);
     const activeAccount = instance.getActiveAccount();
-
+    console.log(activeAccount);
     return (
         <>
             <AuthenticatedTemplate>
