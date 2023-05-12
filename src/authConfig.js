@@ -12,13 +12,13 @@ import { LogLevel } from '@azure/msal-browser';
  */
 export const b2cPolicies = {
     names: {
-        signUpSignIn: 'B2C_1_GoogleLogin',
+        signUpSignIn: 'B2C_1_SignInAndSignUp',
         forgotPassword: 'B2C_1_reset_v3',
         editProfile: 'B2C_1_edit_profile_v2',
     },
     authorities: {
         signUpSignIn: {
-            authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com/B2C_1_GoogleLogin',
+            authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com/B2C_1_SignInAndSignUp',
         },
         forgotPassword: {
             authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com',
