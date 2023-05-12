@@ -12,22 +12,22 @@ import { LogLevel } from '@azure/msal-browser';
  */
 export const b2cPolicies = {
     names: {
-        signUpSignIn: 'B2C_1_susi_v2',
+        signUpSignIn: 'B2C_1_GoogleLogin',
         forgotPassword: 'B2C_1_reset_v3',
         editProfile: 'B2C_1_edit_profile_v2',
     },
     authorities: {
         signUpSignIn: {
-            authority: 'https://bcmstestorg.b2clogin.com/bcmstestorg.onmicrosoft.com/B2C_1_MyAPIMProjectB2C',
+            authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com/B2C_1_GoogleLogin',
         },
         forgotPassword: {
-            authority: 'https://bcmstestorg.b2clogin.com/bcmstestorg.onmicrosoft.com',
+            authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com',
         },
         editProfile: {
-            authority: 'https://bcmstestorg.b2clogin.com/bcmstestorg.onmicrosoft.com',
+            authority: 'https://bcmsdevorg.b2clogin.com/bcmsdevorg.onmicrosoft.com',
         },
     },
-    authorityDomain: 'bcmstestorg.b2clogin.com',
+    authorityDomain: 'bcmsdevorg.b2clogin.com'
 };
 
 //https://bcmstestorg.b2clogin.com/bcmstestorg.onmicrosoft.com/v2.0/.well-known/openid-configuration
@@ -40,10 +40,10 @@ export const b2cPolicies = {
  */
 export const msalConfig = {
     auth: {
-        clientId: 'd0994c85-73b9-44a4-8e4f-84da61e4ffd1', // This is the ONLY mandatory field that you need to supply.
+        clientId: '773f54e7-12bb-4290-8d99-d64b9c885a62', // This is the ONLY mandatory field that you need to supply.
         authority: b2cPolicies.authorities.signUpSignIn.authority, // Choose SUSI as your default authority.
         knownAuthorities: [b2cPolicies.authorityDomain], // Mark your B2C tenant's domain as trusted.
-        redirectUri: '/signin-oidc', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
+        redirectUri: '/auth', // You must register this URI on Azure Portal/App Registration. Defaults to window.location.origin
         postLogoutRedirectUri: '/', // Indicates the page to navigate after logout.
         navigateToLoginRequestUrl: false, // If "true", will navigate back to the original request location before processing the auth code response.
     },
