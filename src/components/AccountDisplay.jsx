@@ -1,15 +1,41 @@
-import { useState } from 'react';
-import { useMsal } from '@azure/msal-react';
+import { useState, useEffect } from 'react';
+/*import {
+    InteractionRequiredAuthError,
+    InteractionStatus,
+} from "@azure/msal-browser";*/
+import { useMsal } from "@azure/msal-react";
 
 const AccountDisplay = (props) => {
-    const { instance } = useMsal();
+    const { instance, inProgress, accounts } = useMsal();
     const activeAccount = instance.getActiveAccount();
     console.log('AccountDisplay:', activeAccount);
-    const [jwt] = useState(props.idToken);
+    const [jwt, setJwt] = useState();
     const [loading, setLoading] = useState(false);
     const [apiResponse, setApiResponse] = useState('')
     const direct = 'https://ms-apimsample-api.azurewebsites.net/api/accounts/test';
     const apim = 'https://ms-apimsample.azure-api.net/api/accounts/test';
+
+
+    useEffect(() => {
+        if (!jwt) {
+            const accessTokenRequest = {
+                scopes: ["user.read"],
+                account: accounts[0],
+            };
+            instance
+                .acquireTokenSilent(accessTokenRequest)
+                .then((accessTokenResponse) => {
+                    // Acquire token silent success
+                    let accessToken = accessTokenResponse.accessToken;
+                    // Call your API with token
+                    setJwt(accessToken);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+    }, [instance, accounts, inProgress, jwt]);
+
     const getAccount = () => {
         console.log(direct, apim);
         setLoading(true);
@@ -49,3 +75,4 @@ const AccountDisplay = (props) => {
 }
 
 export default AccountDisplay;
+
