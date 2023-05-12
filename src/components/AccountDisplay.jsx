@@ -27,7 +27,8 @@ const AccountDisplay = (props) => {
                 .then((accessTokenResponse) => {
                     // Acquire token silent success
                     let accessToken = accessTokenResponse.accessToken;
-                    // Call your API with token
+                    // Call your API with token 
+                    console.log('Got Token', accessToken)
                     setJwt(accessToken);
                 })
                 .catch((error) => {
